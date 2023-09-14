@@ -54,15 +54,6 @@ main {
     flex: 1;
     padding: 15px;
 }
-
-/* portfolio styles */
-#interests {
-    border: 4px silver ridge;
-    padding: 8px;
-}
-h2, h3 {
-    margin: 0px;
-}
 /* portfolio styles */
 .content h1 {
     color: black;
