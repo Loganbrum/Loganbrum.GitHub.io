@@ -52,9 +52,9 @@ $(function () {
     createPlatform(100, 200, 150,20);
     createPlatform(400, 200, 10,10);
     createPlatform(1000, 210, 400,20);
-    createPlatform(1025, 550, 10,200);
+    createPlatform(1025, 550, 10,100);
     createPlatform(950, 650, 10,10);
-    createPlatform(1350, 525, 10,10);
+    createPlatform(1350, 525, 50,10);
     
     
     // TODO 2
@@ -72,7 +72,11 @@ $(function () {
     // You must decide the wall you want the cannon on, the position on the wall, and the time between shots in milliseconds
     // Your wall choices are: 'top' 'left' 'right' and 'bottom'
     // example usage: createCannon(side, position, delay, width, height)
-
+        createCannon ("bottom", 1050, 1000);
+        createCannon ("bottom", 250, 1000);
+        createCannon ("bottom", 1250, 1000);
+        createCannon ("bottom", 500, 1000);
+        createCannon ("bottom", 750, 1000);
 
 
 
