@@ -5,7 +5,6 @@ const friction = 1.5; // how much the player is slowed each frame
 const maxSpeed = 8; // maximum horizontal speed, not vertical
 const playerJumpStrength = 12; // this is subtracted from the speedY each jump
 const projectileSpeed = 8; // the speed of projectiles
-
 /////////////////////////////////////////////////
 //////////ONLY CHANGE ABOVE THIS POINT///////////
 /////////////////////////////////////////////////
