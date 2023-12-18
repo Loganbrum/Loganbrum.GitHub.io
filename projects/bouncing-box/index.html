@@ -8,7 +8,7 @@
 		.box {
 			width: 70px;
 			height: 70px;
-			background-color: teal;
+			background-color: #333399;
 			font-size: 300%;
 			text-align: center;
 			user-select: none;
@@ -19,6 +19,7 @@
 		}
 		.board{
 			height: 100vh;
+			background: linear-gradient(to bottom, #0000ff 0%, #ffbf00 100%);
 		}
 	</style>
 	<!-- 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
@@ -48,8 +49,9 @@
 			box.on('click', handleBoxClick);
 
 			// moves the Box to a new position on the screen along the X-Axis
-			function moveBoxTo(newPositionX) {
+			function moveBoxTo(newPositionX,newPositionY) {
 				box.css("left", newPositionX);
+				box.css("top", newPositionY);
 			}
 
 			// changes the text displayed on the Box
@@ -65,8 +67,10 @@
 			var PositionX = 0;
 			var points = 0;
 			var speed = 10;
+			var PositionY = 0;
+			var speedY = 3;
+			var boardheight = jQuery(window).height();
 
-			
 			/* 
 			This Function will be called 20 times/second. Each time it is called,
 			it should move the Box to a new location. If the box drifts off the screen
@@ -75,12 +79,19 @@
 			function update() {
 				// we want to increase the value of positionX by 10
 				PositionX = PositionX + speed;
-				moveBoxTo(PositionX)
+				PositionY = PositionY + speedY;
+				moveBoxTo(PositionX, PositionY)
 				if (PositionX > boardWidth){
 					speed = speed * -1
 				}
 				if (PositionX < 0){
 					speed = speed * -1
+				}
+				if (PositionY > boardheight){
+					speedY = speedY * -1
+				}
+				if (PositionY < 0){
+					speedY = speedY * -1
 				}
 
 
@@ -92,15 +103,18 @@
 			the left side of the screen.
 			*/
 			function handleBoxClick() {
-				PositionX = 0
+				PositionX = Math.random() * 100;
+				PositionY = Math.random() * 100;
 				points = points + 1
 				changeBoxText(points);
 				if (speed > 0) {
-					speed = speed +3
+					speed = speed +3.14159265359
 				}
-				else {speed = speed -3}
-
-
+				else {speed = speed -3.14159265359}
+				if (speedY > 0) {
+					speedY = speedY +3.14159265359
+				}
+				else {speedY = speedY -3.14159265359}
 			};
 		})();
 	</script>
