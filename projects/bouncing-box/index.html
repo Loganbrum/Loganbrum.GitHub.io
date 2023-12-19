@@ -80,6 +80,7 @@
 				// we want to increase the value of positionX by 10
 				PositionX = PositionX + speed;
 				PositionY = PositionY + speedY;
+				speedY = speedY +9.807;
 				moveBoxTo(PositionX, PositionY)
 				if (PositionX > boardWidth){
 					speed = speed * -1
@@ -88,12 +89,12 @@
 					speed = speed * -1
 				}
 				if (PositionY > boardheight){
-					speedY = speedY * -1
+					speedY = speedY * -.85
 				}
 				if (PositionY < 0){
-					speedY = speedY * -1
+					speedY = speedY * -2
 				}
-
+				
 
 			};
 
