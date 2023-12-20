@@ -123,7 +123,8 @@
 				else {speedY = speedY -3.14159265359}
 			};
 			function endgame () {
-				clearInterval(interval)
+				clearInterval(interval);
+				setTimeout(() => { location.reload(true); }, 6000); 
 			}
 			function clickcount() {
 				clicks = clicks + 1;
