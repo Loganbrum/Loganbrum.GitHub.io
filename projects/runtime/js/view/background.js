@@ -29,6 +29,9 @@ var background = function (window) {
         // ANIMATION VARIABLES HERE //////////////////////////////////////
         //////////////////////////////////////////////////////////////////
         // TODO (several):
+        var tree ;
+        var buildings = [];
+        // var station;
       
       
         // called at the start of game and whenever the page is resized
@@ -39,18 +42,52 @@ var background = function (window) {
             // TODO 1:
             // this currently fills the background with an obnoxious yellow;
             // you should modify both the height and color to suit your game
-            var backgroundFill = draw.rect(canvasWidth,canvasHeight,'yellow');
+            var backgroundFill = draw.rect(canvasWidth,canvasHeight,'black');
             background.addChild(backgroundFill);
             
             // TODO 2: - Add a moon and starfield
-            
-            
+            var station = draw.bitmap("img/260px-Mammalian_Citadel.png");
+                station.x = 1110;
+                station.y = 0;  
+                station.scaleX = 1;
+                station.scaleY = 1;
+                background.addChild(station);
+            var min = 100;
+            var max = 1000;
+            var moon = draw.bitmap("img/moon.png");
+                moon.x = 500;
+                moon.y = 50;  
+                moon.scaleX = 0.5;
+                moon.scaleY = 0.5;
+                background.addChild(moon);
+            var min = 100;
+            var max = 1000;
+            var numLoops = Math.floor(Math.random()* (max - min + 1))+ min;
+            for (let i = 0; i < numLoops; i++){
+                var circle = draw.circle(10, "white", "LightGray", 2);
+                    circle.x = canvasWidth * Math.random();
+                    circle.y = groundY * Math.random();
+                    background.addChild(circle); 
+            }
             // TODO 4: Part 1 - Add buildings!     Q: This is before TODO 4 for a reason! Why?
-            
+            for (var i = 0; i < 5; ++i) {
+                var buildingHeight = (Math.random()*(200-10+1)+10);
+                var building = draw.rect(75, buildingHeight, "LightGray", "Black", 1);
+                building.x = 200 * i;
+                building.y = groundY - buildingHeight;
+                background.addChild(building);
+                buildings.push(building);
+              }
             
             // TODO 3: Part 1 - Add a tree
-            
-            
+            tree = draw.bitmap("img/tree.png");
+            tree.x = 0;
+            tree.y = 0;
+            background.addChild(tree); 
+            // station = draw.bitmap("projects/runtime/img/260px-Mammalian_Citadel.png");
+            // tree.x = 50;
+            // tree.y = 50;
+            // background.addChild(station); 
         } // end of render function - DO NOT DELETE
         
         
@@ -63,11 +100,21 @@ var background = function (window) {
             var groundY = ground.y;
             
             // TODO 3: Part 2 - Move the tree!
-            
+            tree.x = tree.x - 2;
+
+            if (tree.x < -200) {
+            tree.x = canvasWidth;
+            }
             
             // TODO 4: Part 2 - Parallax
+            for(var i = 0; i < buildings.length; i++){
+                var building = buildings[i]
+                building.x = building.x - 1
             
-
+               if(building.x < -200){
+                    building.x = canvasWidth
+               }
+            }
         } // end of update function - DO NOT DELETE
         
         
